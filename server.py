@@ -106,7 +106,9 @@ def GetPost( lon, let):
     url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     r = requests.get(url , headers = header)
     r2 = r.json()
-    #print (r2)
-    print (r2["weather"]["dust"][0]["pm10"]["value"])
+    print (r2)
+    #print (r2["weather"]["dust"][0]["pm10"]["value"])
+
+    return r2["weather"]["dust"][0]["pm10"]["value"]
 
 funcTimer()

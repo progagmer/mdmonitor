@@ -95,4 +95,8 @@ def GetPost(let,lon):
     # return r2["weather"]["dust"][0]["pm10"]["value"]
 
 
-schedule.every(600).seconds.do(funcTimer())
+schedule.every(60).seconds.do(funcTimer)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)

@@ -97,4 +97,4 @@ def GetPost(let,lon):
 
 funcTimer(0)
 
-schedule.every(1).seconds.do(funcTimer(0))
+schedule.every(600).seconds.do(funcTimer(0))

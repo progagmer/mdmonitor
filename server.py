@@ -83,15 +83,16 @@ def funcTimer():
 
 
 def GetPost(let,lon):
+    
+    print("test....")
+    # header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
+    # url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
+    # r = requests.get(url , headers = header)
+    # r2 = r.json()
+    # print (r2)
+    # #print (r2["weather"]["dust"][0]["pm10"]["value"])
 
-    header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
-    url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
-    r = requests.get(url , headers = header)
-    r2 = r.json()
-    print (r2)
-    #print (r2["weather"]["dust"][0]["pm10"]["value"])
-
-    return r2["weather"]["dust"][0]["pm10"]["value"]
+    # return r2["weather"]["dust"][0]["pm10"]["value"]
 
 
 schedule.every(600).seconds.do(funcTimer())

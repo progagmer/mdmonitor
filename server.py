@@ -2,20 +2,23 @@ import threading
 import datetime
 import requests, json
 
-def funcTimer(count):
+def funcTimer():
 
-    print("Timer Expired")
-    #현재시간 출력
-    print(str(count)+" "+str(datetime.datetime.now()))
-
-    count += 1
-    #threading.Timer(delay, 함수, args=[매개변수,]) - delay초 후에 함수실행
-    timer = threading.Timer(5, funcTimer, args=[count])
-    GetPost()
-    GetPost()
-        #timer 시작
+    
+    # 10 초마다 새로 고침.
+    timer = threading.Timer(5, funcTimer)
     timer.start()
-        #timer.cancel()        #타이머 취소
+    _tm = str (GetPost());
+    print(str(datetime.datetime.now()))
+    print("##MDMonitor : Seoul : " + _tm)
+
+    timer = threading.Timer(1, funcTimer)
+    timer.start()
+    _tm = str (GetPost());
+    print(str(datetime.datetime.now()))
+    print("##MDMonitor : KyungGiDo : " + _tm)
+    
+
 
 def GetPost():
 
@@ -26,4 +29,4 @@ def GetPost():
 
     print (r2["weather"]["dust"][0]["pm10"]["value"])
 
-funcTimer(0)
+funcTimer()

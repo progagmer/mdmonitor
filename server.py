@@ -8,9 +8,10 @@ def funcTimer():
     # 10 초마다 새로 고침.
 
     # 1 서울 데이터.
-    #timer = threading.Timer(10, funcTimer)
-    #timer.start()
-
+    count +1;
+    timer = threading.Timer(60, funcTimer)
+    timer.start()
+    print (count + "회차")
     _tm = str (GetPost(37.5714,126.9658));
     print("##MDMonitor : Seoul : " + _tm)
     time.sleep(1)

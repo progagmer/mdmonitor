@@ -2,15 +2,14 @@ import threading
 import datetime
 import requests, json
 import time
+import schedule
 
 def funcTimer(count):
 
-    # 10 초마다 새로 고침.
+    # 10 cho.
 
     # 1 서울 데이터.
     count += 1
-    timer = threading.Timer(3600, funcTimer, args=[count])
-    timer.start()
     print (str(count) + "회차")
     _tm = str (GetPost(37.5714,126.9658));
     print("##MDMonitor : Seoul : " + _tm)
@@ -97,3 +96,5 @@ def GetPost(let,lon):
     return r2["weather"]["dust"][0]["pm10"]["value"]
 
 funcTimer(0)
+
+schedule.every(1).seconds.do(funcTimer(0))

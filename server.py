@@ -15,11 +15,6 @@ def funcTimer():
     print("##MDMonitor : Seoul : " + _tm)
     time.sleep(1)
 
-    # 2 경기 북부 데이터.
-    _tm = str (GetPost(37.7491363,127.0532272));
-    print("##MDMonitor : KyungGiDoNorth : " + _tm)
-    time.sleep(1)
-
     # 3 경기 남부 데이터, 수원시
     _tm = str (GetPost(37.2430863,127.0089135));
     print("##MDMonitor : KyungGiSuwon : " + _tm)
@@ -40,10 +35,6 @@ def funcTimer():
     print("##MDMonitor : Chungbook : " + _tm)
     time.sleep(1)
     
-    # 7 충남
-    _tm = str (GetPost(36.9405641,126.4842582));
-    print("##MDMonitor : ChungNam : " + _tm)
-    time.sleep(1)
 
     # 8 전북
     _tm = str (GetPost(35.7223842,125.8176828));
@@ -60,11 +51,6 @@ def funcTimer():
     # 10 경북
     _tm = str (GetPost(36.233161,128.2744885));
     print("##MDMonitor : KyungBook : " + _tm)
-    time.sleep(1)
-
-    # 10 경남
-    _tm = str (GetPost(35.2369865,128.6900537));
-    print("##MDMonitor : KyungNam : " + _tm)
     time.sleep(1)
 
     # 11 대구
@@ -104,7 +90,7 @@ def GetPost(let,lon):
     url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     r = requests.get(url , headers = header)
     r2 = r.json()
-    print (r2)
+    #print (r2)
     #print (r2["weather"]["dust"][0]["pm10"]["value"])
 
     return r2["weather"]["dust"][0]["pm10"]["value"]

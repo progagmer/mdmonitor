@@ -10,7 +10,7 @@ def funcTimer():
     # 1 서울 데이터.
     #timer = threading.Timer(10, funcTimer)
     #timer.start()
-    
+
     _tm = str (GetPost(37.5714,126.9658));
     print("##MDMonitor : Seoul : " + _tm)
     time.sleep(1)
@@ -98,7 +98,7 @@ def funcTimer():
     time.sleep(1)
 
 
-def GetPost( lon, let):
+def GetPost(let,lon):
 
     header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
     url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"

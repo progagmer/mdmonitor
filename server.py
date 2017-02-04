@@ -8,7 +8,7 @@ def funcTimer():
     # 10 초마다 새로 고침.
 
     # 1 서울 데이터.
-    count +1;
+    count += 1;
     timer = threading.Timer(60, funcTimer)
     timer.start()
     print (count + "회차")

@@ -99,7 +99,7 @@ def funcTimer():
 
 def GetPost( lon, let):
 
-    header = {'appKey': '153c3607-dc80-352b-9568-478315f12286'}
+    header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
     url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     r = requests.get(url , headers = header)
     r2 = r.json()

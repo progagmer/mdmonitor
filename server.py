@@ -9,8 +9,6 @@ def funcTimer():
     # 10 cho.
 
     # 1 서울 데이터.
-    count += 1
-    print (str(count) + "회차")
     _tm = str (GetPost(37.5714,126.9658));
     print("##MDMonitor : Seoul : " + _tm)
     time.sleep(1)

@@ -6,24 +6,25 @@ def funcTimer():
 
     
     # 10 초마다 새로 고침.
-    timer = threading.Timer(5, funcTimer)
+
+    # 서울 데이터.
+    timer = threading.Timer(10, funcTimer)
     timer.start()
-    _tm = str (GetPost());
+    _tm = str (GetPost(37.5714,126.9658));
     print(str(datetime.datetime.now()))
     print("##MDMonitor : Seoul : " + _tm)
 
-    timer = threading.Timer(1, funcTimer)
-    timer.start()
-    _tm = str (GetPost());
+    #경기 북부 데이터.
+    _tm = str (GetPost(37.7491363,127.0532272));
     print(str(datetime.datetime.now()))
-    print("##MDMonitor : KyungGiDo : " + _tm)
+    print("##MDMonitor : KyungGiDoNorth : " + _tm)
     
 
 
-def GetPost():
+def GetPost( lon, let):
 
     header = {'appKey': '153c3607-dc80-352b-9568-478315f12286'}
-    url = "http://apis.skplanetx.com/weather/dust?lon=126.9658000000&lat=37.5714000000&version=1"
+    url = "http://apis.skplanetx.com/weather/dust?lon=" + lon + "lat=" + let + "&version=1"
     r = requests.get(url , headers = header)
     r2 = r.json()
 

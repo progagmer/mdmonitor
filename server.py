@@ -9,7 +9,7 @@ def funcTimer(count):
 
     # 1 서울 데이터.
     count += 1
-    timer = threading.Timer(60, funcTimer, args=[count])
+    timer = threading.Timer(3600, funcTimer, args=[count])
     timer.start()
     print (str(count) + "회차")
     _tm = str (GetPost(37.5714,126.9658));

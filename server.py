@@ -3,7 +3,7 @@ import datetime
 import requests, json
 import time
 
-def funcTimer():
+def funcTimer(count):
 
     # 10 초마다 새로 고침.
 
@@ -96,4 +96,4 @@ def GetPost(let,lon):
 
     return r2["weather"]["dust"][0]["pm10"]["value"]
 
-funcTimer()
+funcTimer(0)

@@ -4,7 +4,7 @@ import requests, json
 import time
 import schedule
 
-def funcTimer(count):
+def funcTimer():
 
     # 10 cho.
 
@@ -95,6 +95,5 @@ def GetPost(let,lon):
 
     return r2["weather"]["dust"][0]["pm10"]["value"]
 
-funcTimer(0)
 
-schedule.every(600).seconds.do(funcTimer(0))
+schedule.every(600).seconds.do(funcTimer())

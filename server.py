@@ -11,7 +11,7 @@ from urllib.request import urlopen
 def funcTimer():
 
     # 10 cho.
-
+    insertData()
     # 1 서울 데이터.
     _tm = str (GetPost(37.5714,126.9658));
     print("##MDMonitor : Seoul : " + _tm)
@@ -89,7 +89,7 @@ def funcTimer():
 def GetPost(let,lon):
     
     print("test....")
-    insertData()
+    
     # header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
     # url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     # r = requests.get(url , headers = header)

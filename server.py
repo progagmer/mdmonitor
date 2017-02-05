@@ -8,6 +8,9 @@ import urllib
 import pymysql
 from urllib.request import urlopen
 
+
+    
+
 def funcTimer():
 
     # 10 cho.
@@ -101,6 +104,8 @@ def GetPost(let,lon):
 
 
 def insertData():
+    
+    print ("[" + str(time.strftime('%Y-%m-%d %H:%M:%S')) +"] : " + "log data...  ")
     _host = 'ja-cdbr-azure-west-a.cloudapp.net'
     _user = 'b777abef975cef'
     _pwd = '5ed53ece'
@@ -121,8 +126,22 @@ def insertData():
     db.close()
 
 
-schedule.every(10).seconds.do(funcTimer)
+#schedule.every(10).seconds.do(funcTimer)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
+
+end = False
+
+def excute_fun (second):
+    
+    global end
+    if end :
+        return
+    
+    # print("aa")
+    insertData()
+    threading.Timer(second, excute_fun, [second]).start()
+
+excute_fun(10.0)

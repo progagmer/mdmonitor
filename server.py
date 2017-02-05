@@ -4,6 +4,10 @@ import requests, json
 import time
 import schedule
 
+import urllib
+import pymysql
+from urllib.request import urlopen
+
 def funcTimer():
 
     # 10 cho.
@@ -85,6 +89,7 @@ def funcTimer():
 def GetPost(let,lon):
     
     print("test....")
+    insertData()
     # header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
     # url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     # r = requests.get(url , headers = header)
@@ -93,6 +98,27 @@ def GetPost(let,lon):
     # #print (r2["weather"]["dust"][0]["pm10"]["value"])
 
     # return r2["weather"]["dust"][0]["pm10"]["value"]
+
+
+def insertData():
+    _host = 'ja-cdbr-azure-west-a.cloudapp.net'
+    _user = 'b777abef975cef'
+    _pwd = '5ed53ece'
+    _db = 'db-60a50c09-aa74'
+
+    _time = time.strftime('%Y-%m-%d %H:%M:%S')
+
+    db = pymysql.connect(host=_host, port=3306, user=_user, passwd=_pwd, db=_db,charset='utf8',autocommit=True)
+    
+    # prepare a cursor object using cursor() method
+    cursor = db.cursor()
+    cursor.execute("""INSERT into datarecord (time,s1,s2) values (%s,%s, %s)""", (_time, 1, 2))
+
+    db.commit()
+    
+    
+    # disconnect from server
+    db.close()
 
 
 schedule.every(60).seconds.do(funcTimer)

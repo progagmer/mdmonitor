@@ -121,7 +121,7 @@ def insertData():
     db.close()
 
 
-schedule.every(60).seconds.do(funcTimer)
+schedule.every(10).seconds.do(funcTimer)
 
 while True:
     schedule.run_pending()

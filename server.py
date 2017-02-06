@@ -29,26 +29,6 @@ from urllib.request import urlopen
 
 
 
-
-    
-        
-    #     insertData
-
-    # end = False
-    # def excute_fun(second):
-        
-    #     global end
-    #     if end :
-    #         return
-        
-    #     # print("aa")
-    #     # insertData()
-    #     threading.Timer(second, excute_fun, [second]).start()
-    
-    
-    # excute_fun(10)
-
-
    
 
     # def funcTimer():
@@ -170,11 +150,27 @@ def insertData():
     
     # disconnect from server
     db.close()
+    
+#     insertData
 
-while True:
-        schedule.run_pending()
-        time.sleep(5)
-        insertData()
+end = False
+def excute_fun(second):
+    
+    global end
+    if end :
+        return
+    
+    # print("aa")
+    insertData()
+    threading.Timer(second, excute_fun, [second]).start()
+
+
+excute_fun(10)
+
+# while True:
+#         schedule.run_pending()
+#         time.sleep(5)
+#         insertData()
 
 # app = App()
 # daemon_runner = runner.DaemonRunner(app)

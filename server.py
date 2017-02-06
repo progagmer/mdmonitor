@@ -8,7 +8,7 @@ import urllib
 import pymysql
 from urllib.request import urlopen
 
-from daemon import runner
+# from daemon import runner
 
 
 # class App():

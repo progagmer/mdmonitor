@@ -148,6 +148,4 @@ def excute_fun (second):
 
 
 with daemon.DaemonContext():
-
-    print("log start...")
     excute_fun(10.0)

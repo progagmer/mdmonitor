@@ -96,18 +96,18 @@ def funcTimer():
     print("##MDMonitor : Jaejoodo : " + _tm)
     insertData(14,_tm)
     time.sleep(1)
-
+ 
 
 
 def GetPost(let,lon):
     
     
-    header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
+    header = {'appKey': '153c3607-dc80-352b-9568-478315f12286'}
     url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     r = requests.get(url , headers = header)
     r2 = r.json()
-    print (r2)
-    #print (r2["weather"]["dust"][0]["pm10"]["value"])
+    # print (r2)
+    print (r2["weather"]["dust"][0]["pm10"]["value"])
 
     return r2["weather"]["dust"][0]["pm10"]["value"]
 
@@ -179,6 +179,6 @@ def excute_fun (second):
     
     threading.Timer(second, excute_fun, [second]).start()
 
-
+# excute_fun(60.0)
 with daemon.DaemonContext():
-    excute_fun(3585.0)
+    excute_fun(7185.0)

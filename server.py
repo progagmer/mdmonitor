@@ -20,7 +20,7 @@ def funcTimer():
     time.sleep(1)
 
     # 2 인천
-    _tm = str (GetPost(37.4668428,126.667171))
+    _tm = str (GetPost(37.4561057,126.7052611))
     print("##MDMonitor : Incheon : " + _tm)
     insertData(2,_tm)
     time.sleep(1)
@@ -50,7 +50,7 @@ def funcTimer():
     time.sleep(1)
 
     # 7 대전
-    _tm = str (GetPost(36.3341548,127.3904357))
+    _tm = str (GetPost(36.350412,127.384547))
     print("##MDMonitor : Daecheon : " + _tm)
     insertData(7,_tm)
     time.sleep(1)
@@ -68,13 +68,13 @@ def funcTimer():
     time.sleep(1)
 
     # 10 광주시
-    _tm = str (GetPost(36.3397103,125.9322271))
+    _tm = str (GetPost(35.1600765,126.851297))
     print("##MDMonitor : GwankJoo : " + _tm)
     insertData(10,_tm)
     time.sleep(1)
 
     # 11 경북
-    _tm = str (GetPost(36.233161,128.2744885))
+    _tm = str (GetPost(36.576111,128.5057068))
     print("##MDMonitor : KyungBook : " + _tm)
     insertData(11,_tm)
     time.sleep(1)

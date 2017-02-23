@@ -236,4 +236,4 @@ def excute_fun (second):
 
 # excute_fun(60.0)
 with daemon.DaemonContext():
-    excute_fun(7185.0)
+    excute_fun(7200.0)

@@ -9,7 +9,7 @@ import urllib
 import pymysql
 from urllib.request import urlopen
 from pyfcm import FCMNotification
-# import daemon
+import daemon
     
 #get sever now value
 _nowDataDic =[]

@@ -115,7 +115,12 @@ def funcTimer():
 
 
 def GetPost(let,lon):    
-    header = {'appKey': '153c3607-dc80-352b-9568-478315f12286'}
+
+    if( (_nowTime < 12)):
+        header = {'appKey': '153c3607-dc80-352b-9568-478315f12286'}
+    else :
+        header = {'appKey': '51db30bf-0f11-3b17-92fe-4ee662af9ef8'}
+    
     url = "http://apis.skplanetx.com/weather/dust?lon=" + str(lon) + "&lat=" + str(let) + "&version=1"
     r = requests.get(url , headers = header)
     r2 = r.json()
@@ -174,23 +179,26 @@ def insertLog():
 #
 # FCM 에 연동하는 부분.
 
+
 api_key = "AAAA3BAXVsw:APA91bHLptlteWrA-bRxxNCg-1ULXijihFl_R8Nu4-5ERBfF8GwcdkFuEiI_iCd3OI-wpZSnEgp6_D5hkSr4EZZ8b_Wj1MoAHvDe9DkvhVc0ih9S6ldGRa1TjD5xfm0DRIPDCegENTqy-3jcPbwct2Ww9oTr22MVPQ"
 
 
+_localeName =""
+
 def TitleSet(x):
     return {
-        1: "[굽신 미세먼지 모니터] 좋음, 미세먼지 적음!", #적음
-        2: "[굽신 미세먼지 모니터] 보통, 주의 요망", #보통
-        3: "[굽신 미세먼지 모니터] 나쁨, 경고! 마스크필수!", #많음
-        4: "[굽신 미세먼지 모니터] 매우나쁨, 경고! 외출금지!!", #매우많음
+        1: _localeName + " 지역 미세먼지 상태 좋음!", #적음
+        2: _localeName + " 지역 미세먼지 보통, 주의", #보통
+        3: _localeName + " 지역 미세먼지 나쁨, 마스크필수!", #많음
+        4: _localeName + " 지역 미세먼지 매우나쁨, 외출금지!!", #매우많음
     }.get(x, "미세먼지를 확인해보세요.") #default
 
 def MsgSet(x):
    return {
-        1: "- 게임플레이시 미세먼지 벌금이 20% 감소합니다.", #적음
-        2: "- 게임플레이시 미세먼지 벌금이 10% 감소합니다.", #보통
-        3: "- 게임플레이시 미세먼지 벌금이 2% 감소합니다.", #많음
-        4: "- 게임플레이시 미세먼지 벌금이 감소하지 않습니다.", #매우많음
+        1: "- 굽신 게임플레이시 미세먼지 벌금이 20% 감소합니다.", #적음
+        2: "- 굽신 게임플레이시 미세먼지 벌금이 10% 감소합니다.", #보통
+        3: "- 굽신 게임플레이시 미세먼지 벌금이 2% 감소합니다.", #많음
+        4: "- 굽신 게임플레이시 미세먼지 벌금이 감소하지 않습니다.", #매우많음
     }.get(x, "- 굽신 게임내에서 미세먼지를 연동하면 게임내 벌금이 감소됩니다.") #default
     
 
@@ -236,4 +244,4 @@ def excute_fun (second):
 
 # excute_fun(60.0)
 with daemon.DaemonContext():
-    excute_fun(7200.0)
+    excute_fun(1800.0)

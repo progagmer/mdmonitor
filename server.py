@@ -9,113 +9,195 @@ import urllib
 import pymysql
 from urllib.request import urlopen
 from pyfcm import FCMNotification
-import daemon
+# import daemon
+    
+#get sever now value
+_nowDataDic =[]
+
+def GetSeverData():
+    
+    _host = 'ja-cdbr-azure-west-a.cloudapp.net'
+    _user = 'b777abef975cef'
+    _pwd = '5ed53ece'
+    _db = 'db-60a50c09-aa74'
+
+    _time = time.strftime('%Y-%m-%d %H:%M:%S')
+
+    db = pymysql.connect(host=_host, port=3306, user=_user, passwd=_pwd, db=_db,charset='utf8',autocommit=True)
+
+    # prepare a cursor object using cursor() method
+    cursor = db.cursor()
+
+    cursor.execute("""
+                SELECT *
+                FROM soonsoonmd
+                """)
+
+    result = cursor.fetchall()
+    for value in result:
+        _nowDataDic.append(float(value[2]))
+
+    db.commit()
+    db.close()
     
 
+#지금 현재값을 받아와서 다른지 체크해준다.
+def GetNowChange( _nowValue,num ):
+    resultValue = False
+    nowNum = 0
+    pastNum = 0
+    nowValueF = float(_nowValue)
+    pastValueF = float(_nowDataDic[num])
+
+    #현재 받아온 값이 어떤 등급인지 계산
+    if( nowValueF < 30):
+        nowNum = 0
+    elif(nowValueF < 50):
+        nowNum = 1
+    elif(nowValueF < 100):
+        nowNum = 2    
+    else:
+        nowNum = 3        
+
+    #현재 받아온 값이 어떤 등급인지 계산
+    if( pastValueF < 30):
+        pastNum = 0
+    elif(pastValueF < 50):
+        pastNum = 1
+    elif(pastValueF < 100):
+        pastNum = 2    
+    else:
+        pastNum = 3     
+
+    if( nowNum != pastNum):
+        #저장되었던 등급과 지금의 등급이 변경되었으므로 알림을 해줌.
+        resultValue = True
+
+    print(resultValue)
+    return resultValue
+
+
 def funcTimer():
+
+    #현재 서버 데이터를 가져온다.
+    GetSeverData()
 
     # 1 서울 데이터.
     _tm = str (GetPost(37.5714,126.9658))
     print("##MDMonitor : Seoul : " + _tm)
     insertData(1,_tm)
-    DustCall("Seoul",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,0)):
+        DustCall("Seoul",_tm) #FCM 으로 콜.
     time.sleep(10)
 
     # 2 인천
     _tm = str (GetPost(37.4561057,126.7052611))
     print("##MDMonitor : Incheon : " + _tm)
     insertData(2,_tm)
-    DustCall("Incheon",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,1)):
+        DustCall("Incheon",_tm) #FCM 으로 콜.
     time.sleep(10)
 
     # 3 경기 남부 데이터, 수원시
     _tm = str (GetPost(37.2430863,127.0089135))
     print("##MDMonitor : KyungGiSuwon : " + _tm)
-    DustCall("KyungGiSuwon",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,2)):
+        DustCall("KyungGiSuwon",_tm) #FCM 으로 콜.
     insertData(3,_tm)
     time.sleep(10)
     
     # 4 강원도 속초 시청
     _tm = str (GetPost(38.2046487,128.5710904))
     print("##MDMonitor : GanwondoSokCho : " + _tm)
-    DustCall("GanwondoSokCho",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,3)):
+        DustCall("GanwondoSokCho",_tm) #FCM 으로 콜.
     insertData(4,_tm)
     time.sleep(10)
     
     # 5 강원도 삼척 시청
     _tm = str (GetPost(37.4435487,129.1467404))
     print("##MDMonitor : GangwonSamcheok : " + _tm)
-    DustCall("GangwonSamcheok",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,4)):
+        DustCall("GangwonSamcheok",_tm) #FCM 으로 콜.
     insertData(5,_tm)
     time.sleep(10)
     
     # 6 충북
     _tm = str (GetPost(36.6354049,127.489273))
     print("##MDMonitor : Chungbook : " + _tm)
-    DustCall("Chungbook",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,5)):
+        DustCall("Chungbook",_tm) #FCM 으로 콜.
     insertData(6,_tm)
     time.sleep(10)
 
     # 7 대전
     _tm = str (GetPost(36.350412,127.384547))
     print("##MDMonitor : Daecheon : " + _tm)
-    DustCall("Daecheon",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,6)):
+        DustCall("Daecheon",_tm) #FCM 으로 콜.
     insertData(7,_tm)
     time.sleep(10)
     
     # 8 전북
     _tm = str (GetPost(35.7223842,125.8176828))
     print("##MDMonitor : JeonBook : " + _tm)
-    DustCall("JeonBook",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,7)):
+        DustCall("JeonBook",_tm) #FCM 으로 콜.
     insertData(8,_tm)
     time.sleep(10)
 
     # 9 전남
     _tm = str (GetPost(34.8144255,126.4595968))
     print("##MDMonitor : JeonNam : " + _tm)
-    DustCall("JeonNam",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,8)):
+        DustCall("JeonNam",_tm) #FCM 으로 콜.
     insertData(9,_tm)
     time.sleep(10)
 
     # 10 광주시
     _tm = str (GetPost(35.1600765,126.851297))
     print("##MDMonitor : GwankJoo : " + _tm)
-    DustCall("GwankJoo",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,9)):
+        DustCall("GwankJoo",_tm) #FCM 으로 콜.
     insertData(10,_tm)
     time.sleep(10)
 
     # 11 경북
     _tm = str (GetPost(36.576111,128.5057068))
     print("##MDMonitor : KyungBook : " + _tm)
-    DustCall("KyungBook",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,10)):
+        DustCall("KyungBook",_tm) #FCM 으로 콜.
     insertData(11,_tm)
     time.sleep(10)
 
     # 12 대구
     _tm = str (GetPost(35.87139,128.5995743))
     print("##MDMonitor : Daegoo : " + _tm)
-    DustCall("Daegoo",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,11)):
+        DustCall("Daegoo",_tm) #FCM 으로 콜.
     insertData(12,_tm)
     time.sleep(10)
 
     # 13 부산
     _tm = str (GetPost(35.1795546,129.0734528))
     print("##MDMonitor : Busan : " + _tm)
-    DustCall("Busan",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,12)):
+        DustCall("Busan",_tm) #FCM 으로 콜.
     insertData(13,_tm)
     time.sleep(10)
 
     # 14 제주도
     _tm = str (GetPost(33.5038303,126.4599603))
     print("##MDMonitor : Jaejoodo : " + _tm)
-    DustCall("Jaejoodo",_tm) #FCM 으로 콜.
+    if(GetNowChange(_tm,13)):
+        DustCall("Jaejoodo",_tm) #FCM 으로 콜.
     insertData(14,_tm)
     time.sleep(10)
  
 
 
 def GetPost(let,lon):    
-
+    _nowTime = int(dt.datetime.now().hour)
     if( (_nowTime < 12)):
         header = {'appKey': '153c3607-dc80-352b-9568-478315f12286'}
     else :
@@ -151,6 +233,9 @@ def insertData(no,value):
     # disconnect from server
     db.close()
     print("inserted data")
+
+
+
 
 
 def insertLog():
@@ -245,3 +330,4 @@ def excute_fun (second):
 # excute_fun(60.0)
 with daemon.DaemonContext():
     excute_fun(1800.0)
+

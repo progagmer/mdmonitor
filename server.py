@@ -86,111 +86,125 @@ def funcTimer():
     _tm = str (GetPost(37.5714,126.9658))
     print("##MDMonitor : Seoul : " + _tm)
     insertData(1,_tm)
-    if(GetNowChange(_tm,0)):
-        DustCall("Seoul",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,0)):
+    _localeName = "서울과 경기북동부"
+    DustCall("Seoul",_tm) #FCM 으로 콜.    
     time.sleep(10)
 
     # 2 인천
     _tm = str (GetPost(37.4561057,126.7052611))
     print("##MDMonitor : Incheon : " + _tm)
     insertData(2,_tm)
-    if(GetNowChange(_tm,1)):
-        DustCall("Incheon",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,1)):
+    _localeName = "인천,경기서부"
+    DustCall("Incheon",_tm) #FCM 으로 콜.
     time.sleep(10)
 
     # 3 경기 남부 데이터, 수원시
     _tm = str (GetPost(37.2430863,127.0089135))
     print("##MDMonitor : KyungGiSuwon : " + _tm)
-    if(GetNowChange(_tm,2)):
-        DustCall("KyungGiSuwon",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,2)):
+    _localeName = "수원,경기남부"
+    DustCall("KyungGiSuwon",_tm) #FCM 으로 콜.
     insertData(3,_tm)
     time.sleep(10)
     
     # 4 강원도 속초 시청
     _tm = str (GetPost(38.2046487,128.5710904))
     print("##MDMonitor : GanwondoSokCho : " + _tm)
-    if(GetNowChange(_tm,3)):
-        DustCall("GanwondoSokCho",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,3)):
+    _localeName = "속초,강원도북부"
+    DustCall("GanwondoSokCho",_tm) #FCM 으로 콜.
     insertData(4,_tm)
     time.sleep(10)
     
     # 5 강원도 삼척 시청
     _tm = str (GetPost(37.4435487,129.1467404))
     print("##MDMonitor : GangwonSamcheok : " + _tm)
-    if(GetNowChange(_tm,4)):
-        DustCall("GangwonSamcheok",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,4)):
+    _localeName = "삼척,강원도남부"
+    DustCall("GangwonSamcheok",_tm) #FCM 으로 콜.
     insertData(5,_tm)
     time.sleep(10)
     
     # 6 충북
     _tm = str (GetPost(36.6354049,127.489273))
     print("##MDMonitor : Chungbook : " + _tm)
-    if(GetNowChange(_tm,5)):
-        DustCall("Chungbook",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,5)):
+    _localeName = "천안,충북"
+    DustCall("Chungbook",_tm) #FCM 으로 콜.
     insertData(6,_tm)
     time.sleep(10)
 
     # 7 대전
     _tm = str (GetPost(36.350412,127.384547))
     print("##MDMonitor : Daecheon : " + _tm)
-    if(GetNowChange(_tm,6)):
-        DustCall("Daecheon",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,6)):
+    _localeName = "대전,충남"
+    DustCall("Daecheon",_tm) #FCM 으로 콜.
     insertData(7,_tm)
     time.sleep(10)
     
     # 8 전북
     _tm = str (GetPost(35.7223842,125.8176828))
     print("##MDMonitor : JeonBook : " + _tm)
-    if(GetNowChange(_tm,7)):
-        DustCall("JeonBook",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,7)):
+    _localeName = "전주,전북"
+    DustCall("JeonBook",_tm) #FCM 으로 콜.
     insertData(8,_tm)
     time.sleep(10)
 
     # 9 전남
     _tm = str (GetPost(34.8144255,126.4595968))
     print("##MDMonitor : JeonNam : " + _tm)
-    if(GetNowChange(_tm,8)):
-        DustCall("JeonNam",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,8)):
+    _localeName = "목포,전남"
+    DustCall("JeonNam",_tm) #FCM 으로 콜.
     insertData(9,_tm)
     time.sleep(10)
 
     # 10 광주시
     _tm = str (GetPost(35.1600765,126.851297))
     print("##MDMonitor : GwankJoo : " + _tm)
-    if(GetNowChange(_tm,9)):
-        DustCall("GwankJoo",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,9)):
+    _localeName = "광주,전남중부"
+    DustCall("GwankJoo",_tm) #FCM 으로 콜.
     insertData(10,_tm)
     time.sleep(10)
 
     # 11 경북
     _tm = str (GetPost(36.576111,128.5057068))
     print("##MDMonitor : KyungBook : " + _tm)
-    if(GetNowChange(_tm,10)):
-        DustCall("KyungBook",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,10)):
+    _localeName = "안동,경북"
+    DustCall("KyungBook",_tm) #FCM 으로 콜.
     insertData(11,_tm)
     time.sleep(10)
 
     # 12 대구
     _tm = str (GetPost(35.87139,128.5995743))
     print("##MDMonitor : Daegoo : " + _tm)
-    if(GetNowChange(_tm,11)):
-        DustCall("Daegoo",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,11)):
+    _localeName = "대구,경남북부"
+    DustCall("Daegoo",_tm) #FCM 으로 콜.
     insertData(12,_tm)
     time.sleep(10)
 
     # 13 부산
     _tm = str (GetPost(35.1795546,129.0734528))
     print("##MDMonitor : Busan : " + _tm)
-    if(GetNowChange(_tm,12)):
-        DustCall("Busan",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,12)):
+    _localeName = "부산,경남남부"
+    DustCall("Busan",_tm) #FCM 으로 콜.
     insertData(13,_tm)
     time.sleep(10)
 
     # 14 제주도
     _tm = str (GetPost(33.5038303,126.4599603))
     print("##MDMonitor : Jaejoodo : " + _tm)
-    if(GetNowChange(_tm,13)):
-        DustCall("Jaejoodo",_tm) #FCM 으로 콜.
+    # if(GetNowChange(_tm,13)):
+    _localeName = "제주도"
+    DustCall("Jaejoodo",_tm) #FCM 으로 콜.
     insertData(14,_tm)
     time.sleep(10)
  
@@ -280,10 +294,10 @@ def TitleSet(x):
 
 def MsgSet(x):
    return {
-        1: "- 굽신 게임플레이시 미세먼지 벌금이 20% 감소합니다.", #적음
-        2: "- 굽신 게임플레이시 미세먼지 벌금이 10% 감소합니다.", #보통
-        3: "- 굽신 게임플레이시 미세먼지 벌금이 2% 감소합니다.", #많음
-        4: "- 굽신 게임플레이시 미세먼지 벌금이 감소하지 않습니다.", #매우많음
+        1: "- 미세먼지가 적네요. 나들이도 괜찮습니다.", #적음
+        2: "- 약간의 미세먼지가 있네요. 외출시 마스크 필수!!", #보통
+        3: "- 미세먼지가 많아요! 외출 주의!! ", #많음
+        4: "- 미세먼지가 매우 많습니다!! 오늘은 외출금지!", #매우많음
     }.get(x, "- 굽신 게임내에서 미세먼지를 연동하면 게임내 벌금이 감소됩니다.") #default
     
 
@@ -320,14 +334,10 @@ def excute_fun (second):
     global end
     if end :
         return
-    
-    # print("aa")
     insertLog() #데이터를 기록한 시간을 남김
     funcTimer() #실제 데이터를 남김
     
     threading.Timer(second, excute_fun, [second]).start()
 
-# excute_fun(60.0)
 with daemon.DaemonContext():
-    excute_fun(1800.0)
-
+    excute_fun(3600.0)

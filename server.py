@@ -317,8 +317,7 @@ def DustCall(location,amount):
     _nowTime = int(dt.datetime.now().hour)
     print(_nowTime)
 
-    if( (_nowTime < 13) and (_nowTime > 0) ):
-        #오전 8시 이후, 오후 10시 이하.
+    if( (_nowTime < 22) and (_nowTime > 8) ):
         SortDust(location,amount)
 
 def PostFCM(location,num):
